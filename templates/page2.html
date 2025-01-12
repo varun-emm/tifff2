@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 2</title>
+</head>
+<body>
+    <h1>Page 2</h1>
+    <form action="{{ url_for('upload_page2') }}" method="post" enctype="multipart/form-data">
+        <label for="image">Upload Image:</label>
+        <input type="file" name="image" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 3</title>
+    <meta http-equiv="refresh" content="5">
+</head>
+<body>
+    <h1>Page 3</h1>
+    {% if images %}
+        <h2>Uploaded Images:</h2>
+        {% for image in images %}
+            <img src="{{ url_for('static', filename='uploadsbck/' ~ image) }}" alt="{{ image }}" style="max-width: 200px;"><br>
+        {% endfor %}
+    {% else %}
+        <p>Loading... Please upload an image on Page 2.</p>
+    {% endif %}
+    <form action="{{ url_for('reset') }}" method="get">
+        <button type="submit">New</button>
+    </form>
+
+</body>
+</html>
