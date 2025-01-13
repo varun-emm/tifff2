@@ -2,22 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page 3</title>
     <meta http-equiv="refresh" content="5">
+    <style>
+        /* Importing Raleway font */
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+        /* Styling the body */
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Raleway', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Styling the container */
+        .container {
+            text-align: center;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1, h2 {
+            margin: 10px 0;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        /* Styling the flickering text */
+        .flicker {
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.05;
+            }
+        }
+
+        /* Styling the images */
+        img {
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Styling the button */
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00cc00;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 <body>
-    <h1>Page 3</h1>
-    {% if images %}
-        <h2>Uploaded Images:</h2>
-        {% for image in images %}
-            <img src="{{ url_for('static', filename='uploadsbck/' ~ image) }}" alt="{{ image }}" style="max-width: 200px;"><br>
-        {% endfor %}
-    {% else %}
-        <p>Loading... Please upload an image on Page 2.</p>
-    {% endif %}
-    <form action="{{ url_for('reset') }}" method="get">
-        <button type="submit">New</button>
-    </form>
-
+    <div class="container">
+        <h1>Tiffer</h1>
+        {% if images %}
+            <h2>Generated Image:</h2>
+            {% for image in images %}
+                <img src="{{ url_for('static', filename='uploadsbck/' ~ image) }}" alt="{{ image }}" style="max-width: 200px;">
+                <br>
+            {% endfor %}
+        {% else %}
+            <p class="flicker">Generating...</p>
+        {% endif %}
+        <form action="{{ url_for('reset') }}" method="get">
+            <button type="submit">New</button>
+        </form>
+    </div>
 </body>
 </html>
